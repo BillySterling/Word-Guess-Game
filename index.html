@@ -7,18 +7,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hangman</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">    
+    <link rel="icon" href="assets/images/noose.gif" type="image/gif" sizes="17x17"> 
+    <!-- <script src="https://use.fontawesome.com/299f16c397.js"></script> -->
+    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">    
-    <link rel="icon" href="assets/images/noose.gif" type="image/gif" sizes="17x17">
 </head>
 
-<body>
-
+<body class="background">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center">U.S. STATES GAME</h1>
+                </div>
+            </div>		
+            <br>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 id="random-state"> </h3>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="stats text-center col-md-4">
+                    <h3 id="wins">Won: </h3>
+                </div>
+                <div class="stats text-center col-md-4">
+                    <h3 id="losses">Lost: </h3>
+                </div>
+                <div class="stats text-center col-md-4">
+                    <h3 id="guesses"> Guesses Remaining: 8</h3>
+                </div>
+                <div class="stats-middle text-center col-md-12">
+                    <h3 id="letters">You Tried: </h3>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-12" >
+                    <h2 class="start text-center">Begin Selecting Letters to Start</h2>
+                </div>
+            </div>
+    
+        </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>    
+
+    <!-- Javascript Link -->
+    <script src="assets/javascript/game.js"></script>
+
 </body>
 </html>
