@@ -69,10 +69,6 @@ $(document).ready(function() {
                         positions[i] = keyword;
                         document.getElementById("random-state").innerHTML = positions.join(" ");
                     }
-                     else 
-                         if (positions[i] == "&thinsp;") {
-                        return;
-                     }
                      else {
                         alert("You have already select letter " + keyword);
                         guessesCount--;
