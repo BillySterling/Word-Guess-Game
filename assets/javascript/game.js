@@ -36,8 +36,8 @@ $(document).ready(function() {
             document.getElementById("guesses").innerHTML = "Guesses Remaining: "+ guessesCount;
 
             // clear the start instructions after game starts
-            var dispInstructions = document.getElementById("instructions");
-            dispInstructions.style.display="none";
+//            var dispInstructions = document.getElementById("instructions");
+//           dispInstructions.style.display="none";
     
             // Chooses random state from category
             state = stateName[Math.floor(Math.random() * stateName.length)];
@@ -68,9 +68,10 @@ $(document).ready(function() {
                     if (positions[i] == "_") {
                         positions[i] = keyword;
                         document.getElementById("random-state").innerHTML = positions.join(" ");
+                        document.getElementById("letters").innerHTML = "You Tried: " + lettersGuessed ;
                     }
                      else {
-                        alert("You have already select letter " + keyword);
+                        document.getElementById("letters").innerHTML = "You Have Already Selected Letter " + keyword ;
                         guessesCount--;
                         document.getElementById("guesses").innerHTML = "Guesses Remaining: "+ guessesCount;
                         return;
@@ -101,9 +102,9 @@ $(document).ready(function() {
     
         document.onkeyup = function(event) {
     
-            if(!gameRunning){
-                startGame();
-            }
+        //    if(!gameRunning){
+        //        startGame();
+        //    }
             var keyword = String.fromCharCode(event.keyCode).toUpperCase();
             var isValidLetter = validLetter.indexOf(keyword);
 
