@@ -8,7 +8,9 @@ $(document).ready(function() {
     // VARIABLES
 
     //var stateName = ["ALABAMA","ALASKA","ARIZONA","ARKANSAS","CALIFORNIA","COLORADO","CONNECTICUT","DELAWARE","DISTRICT OF COLUMBIA","FLORIDA","GEORGIA","HAWAII","IDAHO","ILLINOIS","INDIANA","IOWA","KANSAS","KENTUCKY","LOUISIANA","MAINE","MONTANA","NEBRASKA","NEVADA","NEW HAMPSHIRE","NEW JERSEY","NEW MEXICO","NEW YORK","NORTH CAROLINA","NORTH DAKOTA","OHIO","OKLAHOMA","OREGON","MARYLAND","MASSACHUSETTS","MICHIGAN","MINNESOTA","MISSISSIPPI","MISSOURI","PENNSYLVANIA","RHODE ISLAND","SOUTH CAROLINA","SOUTH DAKOTA","TENNESSEE","TEXAS","UTAH","VERMONT","VIRGINIA","WASHINGTON","WEST VIRGINIA","WISCONSIN","WYOMING"]
-    var stateName = ["IOWA"];
+    //var stateName = ["IOWA"];
+    var stateName = ["SOUTH CAROLINA", "IOWA","TEXAS","NEW YORK"];
+    //var stateName = ["NEW YORK"];
     var validLetter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
     var word;
     var state;
@@ -16,8 +18,8 @@ $(document).ready(function() {
     var wins = 0;
     var losses = 0;
     var guessesCount = 8;
-    var rightLetter = [];
-    var displayState = [];
+    //var rightLetter = [];
+    //var displayState = [];
     var lettersGuessed = [];
     var gameRunning = false;
     var positions = [];
@@ -26,12 +28,12 @@ $(document).ready(function() {
         //==============================================================================================
     
         // FUNCTIONS
-        // Function starts game by running through a loop and displaying underscores in placed of letters from random state
+        // Function starts game by running through a loop and displaying underscores in place of letters from random state
         function startGame () {
     
             gameRunning = true;
             guessesCount = 8;
-            document.getElementById("guesses").innerHTML = "Guesses Left: "+ guessesCount;
+            document.getElementById("guesses").innerHTML = "Guesses Remaining: "+ guessesCount;
 
             // clear the start instructions after game starts
             var dispInstructions = document.getElementById("instructions");
@@ -39,16 +41,17 @@ $(document).ready(function() {
     
             // Chooses random state from category
             state = stateName[Math.floor(Math.random() * stateName.length)];
-            console.log("State = " + state)
+            //console.log("State = " + state)
 
             for (var i = 0; i < state.length; i++) {
                 if (state[i] === " ") {
-                    answerArray[i]= "&thinsp;";
+                    answerArray[i]= " ";
                 } else {
                     answerArray[i]= "_"; 
                 }
             }
             word = answerArray.join(" ");
+            //debugger;
             //console.log("word = " + word);
             //console.log("answerArray = " + answerArray);
             document.getElementById("random-state").innerHTML = word;
@@ -59,22 +62,29 @@ $(document).ready(function() {
             // this positions the letter into the right place of the random state name
             positions = answerArray;
             console.log("positions " + positions);
-            debugger;
+            //debugger;
             for (i = 0 ; i < state.length; i++) {
                 if (state[i] === keyword) {
                     if (positions[i] == "_") {
                         positions[i] = keyword;
                         document.getElementById("random-state").innerHTML = positions.join(" ");
                     }
+                     else 
+                         if (positions[i] == "&thinsp;") {
+                        return;
+                     }
                      else {
                         alert("You have already select letter " + keyword);
+                        guessesCount--;
+                        document.getElementById("guesses").innerHTML = "Guesses Remaining: "+ guessesCount;
+                        return;
                     }  
                 }                 
             }
             positions = positions.join("");
                 if (positions === state) {
                     wins++;
-                    document.getElementById("wins").innerHTML = "Wins: "+ wins;
+                    document.getElementById("wins").innerHTML = "Won: "+ wins;
                     resetGame();
                     startGame();
                 } 
@@ -90,6 +100,8 @@ $(document).ready(function() {
         //=============================================================================================
     
         // STARTS GAME WHEN ANY KEY IS PRESSED
+
+        startGame();
     
         document.onkeyup = function(event) {
     
@@ -112,8 +124,7 @@ $(document).ready(function() {
                 letterInWord (keyword);
             }
             // If letter found has already been used, don't try it again
-                else if (letterfound === -1) {
-    
+                else if (letterfound === -1) {   
                 // Push selected letter into the letters guessed display
                     alreadyGuessed = lettersGuessed.indexOf (keyword);
                     if (alreadyGuessed == -1) {
