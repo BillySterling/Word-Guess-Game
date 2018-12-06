@@ -1,10 +1,9 @@
 // 12/5/2018 - Guess the state hangman game - Georgia Tech coding bootcamp
 $(document).ready(function() {
 
-    // VARIABLE DECLARATIONS
+    // variables
 
     var stateName = ["ALABAMA","ALASKA","ARIZONA","ARKANSAS","CALIFORNIA","COLORADO","CONNECTICUT","DELAWARE","DISTRICT OF COLUMBIA","FLORIDA","GEORGIA","HAWAII","IDAHO","ILLINOIS","INDIANA","IOWA","KANSAS","KENTUCKY","LOUISIANA","MAINE","MONTANA","NEBRASKA","NEVADA","NEW HAMPSHIRE","NEW JERSEY","NEW MEXICO","NEW YORK","NORTH CAROLINA","NORTH DAKOTA","OHIO","OKLAHOMA","OREGON","MARYLAND","MASSACHUSETTS","MICHIGAN","MINNESOTA","MISSISSIPPI","MISSOURI","PENNSYLVANIA","RHODE ISLAND","SOUTH CAROLINA","SOUTH DAKOTA","TENNESSEE","TEXAS","UTAH","VERMONT","VIRGINIA","WASHINGTON","WEST VIRGINIA","WISCONSIN","WYOMING"]
-
     var validLetter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
     var word;
     var state;
@@ -54,11 +53,13 @@ $(document).ready(function() {
             losses++;
             document.getElementById("losses").innerHTML = "Lost: "+ losses;
             resetGame();
+            document.getElementById("letters").innerHTML = "Sorry!  The Correct Spelling is " + state;
             startGame();
         }							
     }
    
-        // FUNCTIONS
+        // fumctions
+
         // Function starts game by running through a loop and displaying underscores in place of letters for random state
         function startGame () {
     
@@ -108,6 +109,7 @@ $(document).ready(function() {
                     wins++;
                     document.getElementById("wins").innerHTML = "Won: "+ wins;
                     resetGame();
+                    document.getElementById("letters").innerHTML = "Congratulations!  You Guessed " + state;
                     startGame();
                 } 
            }
@@ -116,7 +118,7 @@ $(document).ready(function() {
             lettersGuessed = [];
             positions = [];
             answerArray = [];
-            document.getElementById("letters").innerHTML = "You Tried: " + lettersGuessed ;
+            document.getElementById("letters").innerHTML = "You Tried: " + lettersGuessed;
         }
     })
     
