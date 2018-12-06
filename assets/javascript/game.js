@@ -12,7 +12,6 @@ $(document).ready(function() {
     var losses = 0;
     var guessesCount = 8;
     var lettersGuessed = [];
-    var gameRunning = false;
     var positions = [];
     var alreadyGuessed = -1;
     
