@@ -14,10 +14,14 @@ $(document).ready(function() {
     var lettersGuessed = [];
     var positions = [];
     var alreadyGuessed = -1;
-    
-    startGame();
+    var gameRunning = false;
     
     document.onkeyup = function(event) {
+
+        if(!gameRunning){
+            startGame();
+            document.getElementById("letters").innerHTML = "Letters Selected: " + lettersGuessed;
+		}
 
         var keyword = String.fromCharCode(event.keyCode).toUpperCase();
         var isValidLetter = validLetter.indexOf(keyword);
@@ -40,19 +44,19 @@ $(document).ready(function() {
                 alreadyGuessed = lettersGuessed.indexOf (keyword);
                 if (alreadyGuessed == -1) {
                     lettersGuessed.push(keyword);
-                    document.getElementById("letters").innerHTML = "You Tried: " + lettersGuessed ;
+                    document.getElementById("letters").innerHTML = "Letters Selected: " + lettersGuessed;
                 }
             // decremant guess count every time a letter is pressed
                 guessesCount--;
-                document.getElementById("guesses").innerHTML = "Guesses Remaining: " + guessesCount;
+                document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesCount;
             }
 
         if (guessesCount === 0) {
-            document.getElementById("guesses").innerHTML = "Guesses Remaining: " + guessesCount;
+            document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesCount;
             losses++;
             document.getElementById("losses").innerHTML = "Lost: "+ losses;
             resetGame();
-            document.getElementById("letters").innerHTML = "Sorry!  The Correct Spelling is " + state;
+            document.getElementById("letters").innerHTML = "Sorry!  The Answer is " + state + ". Try Again";
             startGame();
         }							
     }
@@ -64,7 +68,7 @@ $(document).ready(function() {
     
             gameRunning = true;
             guessesCount = 8;
-            document.getElementById("guesses").innerHTML = "Guesses Remaining: "+ guessesCount;
+            document.getElementById("guesses").innerHTML = "Guesses Left: "+ guessesCount;
     
             // Chooses random state from array
             state = stateName[Math.floor(Math.random() * stateName.length)];
@@ -92,13 +96,14 @@ $(document).ready(function() {
                 if (state[i] === keyword) {
                     if (positions[i] == "_") {
                         positions[i] = keyword;
+                        lettersGuessed.push(keyword);
                         document.getElementById("random-state").innerHTML = positions.join(" ");
-                        document.getElementById("letters").innerHTML = "You Tried: " + lettersGuessed ;
+                        document.getElementById("letters").innerHTML = "Letters Selected: " + lettersGuessed ;
                     }
                      else {
                         document.getElementById("letters").innerHTML = "You Have Already Selected Letter " + keyword ;
                         guessesCount--;
-                        document.getElementById("guesses").innerHTML = "Guesses Remaining: "+ guessesCount;
+                        document.getElementById("guesses").innerHTML = "Guesses Left: "+ guessesCount;
                         return;
                     }  
                 }                 
@@ -117,7 +122,7 @@ $(document).ready(function() {
             lettersGuessed = [];
             positions = [];
             answerArray = [];
-            document.getElementById("letters").innerHTML = "You Tried: " + lettersGuessed;
+            document.getElementById("letters").innerHTML = "Letters Selected: " + lettersGuessed;
         }
     })
     
