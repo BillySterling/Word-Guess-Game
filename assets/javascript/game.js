@@ -17,7 +17,7 @@ $(document).ready(function() {
     var gameRunning = false;
     
     document.onkeyup = function(event) {
-
+        debugger;
         if(!gameRunning){
             startGame();
             document.getElementById("letters").innerHTML = "Letters Selected: " + lettersGuessed;
@@ -85,6 +85,7 @@ $(document).ready(function() {
             //console.log("word = " + word);
             //console.log("answerArray = " + answerArray);
             document.getElementById("random-state").innerHTML = word;
+
         } 
     
         // Function evaluating the positions of the selected letter in the string of states
@@ -124,5 +125,6 @@ $(document).ready(function() {
             answerArray = [];
             document.getElementById("letters").innerHTML = "Letters Selected: " + lettersGuessed;
         }
+
     })
     
