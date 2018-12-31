@@ -17,7 +17,6 @@ $(document).ready(function() {
     var gameRunning = false;
     
     document.onkeyup = function(event) {
-        debugger;
         if(!gameRunning){
             startGame();
             document.getElementById("letters").innerHTML = "Letters Selected: " + lettersGuessed;
@@ -90,6 +89,7 @@ $(document).ready(function() {
     
         // Function evaluating the positions of the selected letter in the string of states
         function letterInWord(keyword) {
+            var isMultipleLetter = 0;
             // this positions the letter into the right place of the random state name
             positions = answerArray;
             //console.log("positions " + positions);
@@ -97,10 +97,13 @@ $(document).ready(function() {
                 if (state[i] === keyword) {
                     if (positions[i] == "_") {
                         positions[i] = keyword;
-                        lettersGuessed.push(keyword);
+                        isMultipleLetter = lettersGuessed.indexOf(keyword);
+                        if (isMultipleLetter === -1) {
+                            lettersGuessed.push(keyword);
+                            }
                         document.getElementById("random-state").innerHTML = positions.join(" ");
                         document.getElementById("letters").innerHTML = "Letters Selected: " + lettersGuessed ;
-                    }
+                        }
                      else {
                         document.getElementById("letters").innerHTML = "You Have Already Selected Letter " + keyword ;
                         guessesCount--;
