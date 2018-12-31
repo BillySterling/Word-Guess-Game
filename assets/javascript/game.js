@@ -32,7 +32,7 @@ $(document).ready(function() {
 
         letterfound = state.indexOf(keyword);
         // console.log("letter found = " + letterfound);
-
+        // debugger;
         // If letter pressed is in the random state, then letterInWord gets called
         if (letterfound != -1) {
             letterInWord (keyword);
@@ -46,6 +46,9 @@ $(document).ready(function() {
                     document.getElementById("letters").innerHTML = "Letters Selected: " + lettersGuessed;
                 }
             // decremant guess count every time a letter is pressed
+                else {
+                    document.getElementById("letters").innerHTML = "You Have Already Selected Letter " + keyword ;
+                }
                 guessesCount--;
                 document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesCount;
             }
@@ -89,6 +92,7 @@ $(document).ready(function() {
     
         // Function evaluating the positions of the selected letter in the string of states
         function letterInWord(keyword) {
+            // debugger;
             var isMultipleLetter = 0;
             // this positions the letter into the right place of the random state name
             positions = answerArray;
