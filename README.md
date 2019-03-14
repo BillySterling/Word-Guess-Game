@@ -10,7 +10,7 @@ JavaScript
 
 ### Screenshot
 
-![Landing Page Image](Screenshot.png)
+![Landing Page Image](screenshot.png)
 
 
 https://billysterling.github.io/Word-Guess-Game/
