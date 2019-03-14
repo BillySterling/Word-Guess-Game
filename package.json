@@ -1,0 +1,27 @@
+{
+  "name": "word-guess-game",
+  "version": "1.0.0",
+  "description": "US States Word Guess Game",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BillySterling/Word-Guess-Game.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "HTML",
+    "CSS3"
+  ],
+  "author": "Billy Sterling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BillySterling/Word-Guess-Game/issues"
+  },
+  "homepage": "https://github.com/BillySterling/Word-Guess-Game#readme",
+  "devDependencies": {
+    "eslint": "^5.15.1"
+  }
+}

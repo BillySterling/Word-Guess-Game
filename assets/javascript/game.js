@@ -1,4 +1,5 @@
 // 12/5/2018 - Guess the state hangman game - Georgia Tech coding bootcamp
+/*eslint-env jquery*/
 $(document).ready(function() {
 
     // variables
@@ -16,7 +17,9 @@ $(document).ready(function() {
     var alreadyGuessed = -1;
     var gameRunning = false;
     
+    //document.onkeyup = function(event) {
     document.onkeyup = function(event) {
+
         if(!gameRunning){
             startGame();
             document.getElementById("letters").innerHTML = "Letters Selected: " + lettersGuessed;
@@ -30,7 +33,7 @@ $(document).ready(function() {
             return;
         }
 
-        letterfound = state.indexOf(keyword);
+        var letterfound = state.indexOf(keyword);
         // console.log("letter found = " + letterfound);
         // debugger;
         // If letter pressed is in the random state, then letterInWord gets called
@@ -97,7 +100,7 @@ $(document).ready(function() {
             // this positions the letter into the right place of the random state name
             positions = answerArray;
             //console.log("positions " + positions);
-            for (i = 0 ; i < state.length; i++) {
+            for (var i = 0 ; i < state.length; i++) {
                 if (state[i] === keyword) {
                     if (positions[i] == "_") {
                         positions[i] = keyword;
